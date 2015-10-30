@@ -7,7 +7,7 @@ using MovieStreaming.Statistics;
 
 namespace MovieStreaming.Actors
 {
-    public class TrendingMoviesActor : ReceiveActor
+    public class TrendingMoviesActor : ActorBase
     {
         private readonly ITrendingMovieAnalyzer _trendAnalyzer;
 
@@ -39,7 +39,7 @@ namespace MovieStreaming.Actors
 
             var topMovie = _trendAnalyzer.CalculateMostPopularMovie(_recentlyPlayedMovies);
 
-            // TODO: log: TrendingMovieActor Most popular movie trending now is topMovie
+            _logger.Info("TrendingMovieActor Most popular movie trending now is {0}", topMovie);
         }
 
         private void LogDebug()
@@ -53,34 +53,7 @@ namespace MovieStreaming.Actors
                 sb.AppendLine(movie);
             }
 
-            // TODO: log: TrendingMovieActor sb.ToString()            
+            _logger.Debug("TrendingMovieActor {0}", sb);
         }
-
-        #region Lifecycle hooks
-        
-        protected override void PreStart()
-        {            
-            // TODO: log: TrendingMovieActor PreStart
-        }
-
-        protected override void PostStop()
-        {
-            // TODO: log: TrendingMovieActor PostStop
-        }
-
-        protected override void PreRestart(Exception reason, object message)
-        {
-            // TODO: log: TrendingMovieActor PreRestart because reason
-
-            base.PreRestart(reason, message);
-        }
-
-        protected override void PostRestart(Exception reason)
-        {
-            // TODO: log: TrendingMovieActor PostRestart because reason
-
-            base.PostRestart(reason);
-        }
-        #endregion
     }
 }

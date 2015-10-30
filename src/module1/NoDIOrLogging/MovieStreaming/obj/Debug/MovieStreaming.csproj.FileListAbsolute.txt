@@ -1,0 +1,14 @@
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\MovieStreaming.exe.config
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\MovieStreaming.exe
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\MovieStreaming.pdb
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\Akka.dll
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\Newtonsoft.Json.dll
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\Akka.xml
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\Newtonsoft.Json.xml
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\obj\Debug\MovieStreaming.csprojResolveAssemblyReference.cache
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\obj\Debug\MovieStreaming.exe
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\obj\Debug\MovieStreaming.pdb
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\Akka.Logger.NLog.dll
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\NLog.dll
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\Akka.Logger.NLog.xml
+F:\git\local\Pluralsight\Logging and DI in Akka.NET\src\module1\NoDIOrLogging\MovieStreaming\bin\Debug\NLog.xml

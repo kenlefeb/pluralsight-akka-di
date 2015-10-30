@@ -7,12 +7,12 @@ using MovieStreaming.Messages;
 
 namespace MovieStreaming.Actors
 {
-    public class MoviePlayCounterActor : ReceiveActor
+    public class MoviePlayCounterActor : ActorBase
     {
         private readonly Dictionary<string, int> _moviePlayCounts;
 
         public MoviePlayCounterActor()
-        {            
+        {
             _moviePlayCounts = new Dictionary<string, int>();
 
             Receive<IncrementPlayCountMessage>(message => HandleIncrementMessage(message));
@@ -40,36 +40,8 @@ namespace MovieStreaming.Actors
                 throw new InvalidOperationException("Simulated exception");
             }
 
-            // TODO: log: MoviePlayCounterActor message.MovieTitle has been watched _moviePlayCounts[message.MovieTitle] times
+            _logger.Info("MoviePlayCounterActor {0} has been watched {1} times", message.MovieTitle, _moviePlayCounts[message.MovieTitle]);
         }
 
-
-
-        #region Lifecycle hooks
-
-        protected override void PreStart()
-        {
-            // TODO: log: MoviePlayCounterActor PreStart
-        }
-
-        protected override void PostStop()
-        {
-            // TODO: log: MoviePlayCounterActor PostStop
-        }
-
-        protected override void PreRestart(Exception reason, object message)
-        {
-            // TODO: log: MoviePlayCounterActor PreRestart because reason
-
-            base.PreRestart(reason, message);
-        }
-
-        protected override void PostRestart(Exception reason)
-        {
-            // TODO: log: MoviePlayCounterActor PostRestart because reason
-
-            base.PostRestart(reason);
-        }
-        #endregion
     }
 }

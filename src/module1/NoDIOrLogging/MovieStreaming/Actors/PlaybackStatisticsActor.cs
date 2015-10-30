@@ -1,11 +1,14 @@
 ﻿using System;
 using Akka.Actor;
+using Akka.Event;
 using MovieStreaming.Exceptions;
 
 namespace MovieStreaming.Actors
 {
-    public class PlaybackStatisticsActor : ReceiveActor
+    public class PlaybackStatisticsActor : ActorBase
     {
+        private ILoggingAdapter _logger = Context.GetLogger();
+
         public PlaybackStatisticsActor()
         {
             Context.ActorOf(Props.Create<MoviePlayCounterActor>(), "MoviePlayCounter");
@@ -14,13 +17,13 @@ namespace MovieStreaming.Actors
 
         protected override SupervisorStrategy SupervisorStrategy()
         {
-            
+
             return new OneForOneStrategy(
                 exception =>
                 {
                     if (exception is ActorInitializationException)
                     {
-                        // TODO: log: PlaybackStatisticsActor PlaybackStatisticsActor supervisor strategy stopping child due to ActorInitializationException
+                        _logger.Error(exception, "PlaybackStatisticsActor PlaybackStatisticsActor supervisor strategy stopping child due to ActorInitializationException");
 
                         return Directive.Stop;
                     }
@@ -29,43 +32,17 @@ namespace MovieStreaming.Actors
                     {
                         var terribleMovieEx = (SimulatedTerribleMovieException) exception;
 
-                        // TODO: log: PlaybackStatisticsActor supervisor strategy resuming child due to terrible movie terribleMovieEx.MovieTitle
+                        _logger.Error(exception, "PlaybackStatisticsActor supervisor strategy resuming child due to terrible movie {0}", terribleMovieEx.MovieTitle);
 
                         return Directive.Resume;
                     }
-                    
-                    // TODO: log: PlaybackStatisticsActor supervisor strategy restarting child due to unexpected exception
+
+                    _logger.Error("PlaybackStatisticsActor supervisor strategy restarting child due to unexpected exception");
                     return Directive.Restart;
                 }
                 );
 
         }
 
-        #region Lifecycle hooks
-
-        protected override void PreStart()
-        {
-            // TODO: log: PlaybackStatisticsActor PreStart
-        }
-
-        protected override void PostStop()
-        {
-            // TODO: log: PlaybackStatisticsActor PostStop
-        }
-
-        protected override void PreRestart(Exception reason, object message)
-        {
-            // TODO: log: PlaybackStatisticsActor PreRestart because reason
-
-            base.PreRestart(reason, message);
-        }
-
-        protected override void PostRestart(Exception reason)
-        {
-            // TODO: log: PlaybackStatisticsActor PostRestart because reason
-
-            base.PostRestart(reason);
-        }
-        #endregion
-    }
+   }
 }

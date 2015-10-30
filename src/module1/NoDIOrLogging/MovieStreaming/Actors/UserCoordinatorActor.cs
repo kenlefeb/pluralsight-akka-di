@@ -5,7 +5,7 @@ using MovieStreaming.Messages;
 
 namespace MovieStreaming.Actors
 {
-    public class UserCoordinatorActor : ReceiveActor
+    public class UserCoordinatorActor : ActorBase
     {
         private readonly Dictionary<int, IActorRef> _users;
 
@@ -39,41 +39,14 @@ namespace MovieStreaming.Actors
         {
             if (!_users.ContainsKey(userId))
             {
-                IActorRef newChildActorRef = 
+                IActorRef newChildActorRef =
                     Context.ActorOf(Props.Create(() => new UserActor(userId)), "User" + userId);
 
                 _users.Add(userId, newChildActorRef);
 
-                // TODO: log: UserCoordinatorActor created new child UserActor for userId
-                // TODO: log: Total Users _users.Count
+                _logger.Info("UserCoordinatorActor created new child UserActor for {0}", userId);
+                _logger.Info("Total Users {0}", _users.Count);
             }
         }
-
-
-        #region Lifecycle hooks
-        protected override void PreStart()
-        {
-            // TODO: log: UserCoordinatorActor PreStart
-        }
-
-        protected override void PostStop()
-        {
-            // TODO: log: UserCoordinatorActor PostStop
-        }
-
-        protected override void PreRestart(Exception reason, object message)
-        {
-            // TODO: log: UserCoordinatorActor PreRestart because reason
-
-            base.PreRestart(reason, message);
-        }
-
-        protected override void PostRestart(Exception reason)
-        {
-            // TODO: log: UserCoordinatorActor PostRestart because reason
-
-            base.PostRestart(reason);
-        } 
-        #endregion
     }
 }

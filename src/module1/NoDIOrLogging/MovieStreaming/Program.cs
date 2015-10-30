@@ -22,7 +22,7 @@ namespace MovieStreaming
 
                 Console.WriteLine();
                 Console.WriteLine("enter a command and hit enter");
-                
+
                 var command = Console.ReadLine();
 
                 if (command.StartsWith("play"))
@@ -36,7 +36,7 @@ namespace MovieStreaming
 
                 if (command.StartsWith("stop"))
                 {
-                    int userId = int.Parse(command.Split(',')[1]);                    
+                    int userId = int.Parse(command.Split(',')[1]);
 
                     var message = new StopMovieMessage(userId);
                     MovieStreamingActorSystem.ActorSelection("/user/Playback/UserCoordinator").Tell(message);
