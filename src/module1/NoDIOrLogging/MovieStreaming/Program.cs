@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Threading;
 using Akka.Actor;
+using Akka.DI.AutoFac;
+using Autofac;
 using MovieStreaming.Actors;
 using MovieStreaming.Messages;
+using MovieStreaming.Statistics;
 using Serilog;
 
 namespace MovieStreaming
@@ -13,14 +16,20 @@ namespace MovieStreaming
 
         private static void Main(string[] args)
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<SimpleTrendingMovieAnalyzer>().As<ITrendingMovieAnalyzer>();
+            builder.RegisterType<TrendingMoviesActor>();
+            var container = builder.Build();
+
             var logger = new LoggerConfiguration()
                 .WriteTo.Seq("http://localhost:5341")
-                .MinimumLevel.Information()
                 .CreateLogger();
 
             Serilog.Log.Logger = logger;
 
             MovieStreamingActorSystem = ActorSystem.Create("MovieStreamingActorSystem");
+            var resolver = new AutoFacDependencyResolver(container, MovieStreamingActorSystem);
+
             MovieStreamingActorSystem.ActorOf(Props.Create<PlaybackActor>(), "Playback");
 
 
