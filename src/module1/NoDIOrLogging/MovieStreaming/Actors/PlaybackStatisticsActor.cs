@@ -32,7 +32,7 @@ namespace MovieStreaming.Actors
                     {
                         var terribleMovieEx = (SimulatedTerribleMovieException) exception;
 
-                        _logger.Error(exception, "PlaybackStatisticsActor supervisor strategy resuming child due to terrible movie {0}", terribleMovieEx.MovieTitle);
+                        _logger.Error(exception, "PlaybackStatisticsActor supervisor strategy resuming child due to terrible movie {MovieTitle}", terribleMovieEx.MovieTitle);
 
                         return Directive.Resume;
                     }

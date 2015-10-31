@@ -44,8 +44,8 @@ namespace MovieStreaming.Actors
 
                 _users.Add(userId, newChildActorRef);
 
-                _logger.Info("UserCoordinatorActor created new child UserActor for {0}", userId);
-                _logger.Info("Total Users {0}", _users.Count);
+                _logger.Info("UserCoordinatorActor created new child UserActor for {UserId}", userId);
+                _logger.Info("Total Users {UserCount}", _users.Count);
             }
         }
     }

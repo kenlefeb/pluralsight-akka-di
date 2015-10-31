@@ -20,24 +20,24 @@ namespace MovieStreaming.Actors
 
         protected override void PreStart()
         {
-            _logger.Debug("{0} PreStart", _loggingIdentifier);
+            _logger.Debug("{Actor} PreStart", _loggingIdentifier);
         }
 
         protected override void PostStop()
         {
-            _logger.Debug("{0} PostStop", _loggingIdentifier);
+            _logger.Debug("{Actor} PostStop", _loggingIdentifier);
         }
 
         protected override void PreRestart(Exception reason, object message)
         {
-            _logger.Debug("{0} PreRestart because {1}", _loggingIdentifier, reason);
+            _logger.Debug("{Actor} PreRestart because {1}", _loggingIdentifier, reason);
 
             base.PreRestart(reason, message);
         }
 
         protected override void PostRestart(Exception reason)
         {
-            _logger.Debug("{0} PostRestart because {1}", _loggingIdentifier, reason);
+            _logger.Debug("{Actor} PostRestart because {1}", _loggingIdentifier, reason);
 
             base.PostRestart(reason);
         }

@@ -23,12 +23,12 @@ namespace MovieStreaming.Actors
             Receive<PlayMovieMessage>(
                 message =>
                 {
-                   _logger.Warning("UserActor {0} cannot start playing another movie before stopping existing one", _userId);
+                   _logger.Warning("UserActor {UserId} cannot start playing another movie before stopping existing one", _userId);
                 });
 
             Receive<StopMovieMessage>(message => StopPlayingCurrentMovie());
 
-            _logger.Info("UserActor {0} behaviour has now become Playing", _userId);
+            _logger.Info("UserActor {UserId} behaviour has now become Playing", _userId);
         }
 
         private void Stopped()
@@ -38,18 +38,18 @@ namespace MovieStreaming.Actors
             Receive<StopMovieMessage>(
                 message =>
                 {
-                    _logger.Warning("UserActor {0} cannot stop if nothing is playing", _userId);
+                    _logger.Warning("UserActor {UserId} cannot stop if nothing is playing", _userId);
                 }
                 );
 
-            _logger.Info("UserActor {0} behaviour has now become Stopped", _userId);
+            _logger.Info("UserActor {UserId} behaviour has now become Stopped", _userId);
         }
 
         private void StartPlayingMovie(string title)
         {
             _currentlyWatching = title;
 
-            _logger.Info("UserActor {0} is currently watching _currentlyWatching", _userId);
+            _logger.Info("UserActor {UserId} is currently watching _currentlyWatching", _userId);
 
             Context.ActorSelection("/user/Playback/PlaybackStatistics/MoviePlayCounter")
                 .Tell(new IncrementPlayCountMessage(title));
@@ -62,7 +62,7 @@ namespace MovieStreaming.Actors
 
         private void StopPlayingCurrentMovie()
         {
-            _logger.Info("UserActor {0} has stopped watching _currentlyWatching", _userId);
+            _logger.Info("UserActor {UserId} has stopped watching _currentlyWatching", _userId);
 
             _currentlyWatching = null;
 

@@ -39,7 +39,7 @@ namespace MovieStreaming.Actors
 
             var topMovie = _trendAnalyzer.CalculateMostPopularMovie(_recentlyPlayedMovies);
 
-            _logger.Info("TrendingMovieActor Most popular movie trending now is {0}", topMovie);
+            _logger.Info("TrendingMovieActor Most popular movie trending now is {MovieTitle}", topMovie);
         }
 
         private void LogDebug()
@@ -53,7 +53,7 @@ namespace MovieStreaming.Actors
                 sb.AppendLine(movie);
             }
 
-            _logger.Debug("TrendingMovieActor {0}", sb);
+            _logger.Debug("TrendingMovieActor {RecentlyPlayedMovies}", sb);
         }
     }
 }

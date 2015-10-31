@@ -40,7 +40,7 @@ namespace MovieStreaming.Actors
                 throw new InvalidOperationException("Simulated exception");
             }
 
-            _logger.Info("MoviePlayCounterActor {0} has been watched {1} times", message.MovieTitle, _moviePlayCounts[message.MovieTitle]);
+            _logger.Info("MoviePlayCounterActor {MovieTitle} has been watched {MoviePlayCount} times", message.MovieTitle, _moviePlayCounts[message.MovieTitle]);
         }
 
     }
