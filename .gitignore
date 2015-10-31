@@ -2,6 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/src/module1/NoDIOrLogging/MovieStreaming/bin/Debug
-/src/module1/NoDIOrLogging/MovieStreaming/obj/Debug
-/src/module1/NoDIOrLogging/packages
+bin
+obj
+packages
+.vs
